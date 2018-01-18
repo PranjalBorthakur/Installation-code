@@ -1,0 +1,22 @@
+Download, Configure Java and Configure Javac: 
+
+    sudo yum list java\*-openjdk.x86_64
+    sudo yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+    sudo /usr/sbin/alternatives --config java
+        ~ select option : java-1.8.0-openjdk.x86_64
+    sudo /usr/sbin/alternatives --config javac
+        ~ select option :  java-1.8.0-openjdk.x86_64 
+    java -version
+    javac -version
+
+
+Set your JAVA_HOME and JRE_HOME:
+
+    echo -e "\n## JAVA VARS -------------------- " >> ~/.bashrc
+    echo "export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk" >> ~/.bashrc
+    echo "export JRE_HOME=/usr/lib/jvm/jre" >> ~/.bashrc
+    
+Check your vars:
+
+    echo $JAVA_HOME
+    echo $JRE_HOME
