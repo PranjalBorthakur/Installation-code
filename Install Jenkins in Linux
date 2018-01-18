@@ -3,3 +3,10 @@ sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 sudo yum install jenkins
 sudo service jenkins start
 sudo chkconfig --add jenkins
+
+
+Once the before and after forwarding ports are allowed, you can now run the command to forward port 80 traffic to 8080, and 
+port 443 traffic to 8443. The commands look like this:
+
+    sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+    sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8443
