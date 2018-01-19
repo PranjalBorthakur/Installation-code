@@ -1,7 +1,9 @@
 Run the following command in Terminal:
 
 sudo apt-get install openjdk-8-jdk
-sudo apt-get install openjdk-8-source #this is optional, the jdk source code
+sudo apt-get install openjdk-8-source 
+
+#this is optional, the jdk source code
 
 Type commandline as below...
 
