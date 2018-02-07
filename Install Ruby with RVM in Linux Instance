@@ -1,0 +1,42 @@
+To install Ruby, you have to run the following commands on your production server to install RVM:
+
+sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | sudo bash -s stable
+sudo usermod -a -G rvm `whoami`
+
+You may need to use gpg2 instead of gpg on some systems.
+On systems where sudo is configured with secure_path, the shell environment needs to be modified to set rvmsudo_secure_path=1. 
+secure_path is set on most Linux systems, but not on macOS. 
+The following command tries to autodetect whether it is necessary to install rvmsudo_secure_path=1, and only installs the 
+environment variable if it is the code.
+
+if sudo grep -q secure_path /etc/sudoers; then sudo sh -c "echo export rvmsudo_secure_path=1 >> /etc/profile.d/rvm_secure_path.sh" && echo Environment variable installed; fi
+
+Install the Ruby version you want:
+
+rvm install ruby
+rvm --default use ruby
+
+Install BUNDLER:
+Bundler is a popular tool for managing application gem dependencies. We will use Bundler in this tutorial, so let us install it:
+
+gem install bundler --no-rdoc --no-ri
+
+Optional: install Node.js if you're using Rails
+
+If you are using Rails, then you must install Node.js. This is because Rails's asset pipeline compiler requires a Javascript runtime. The Node.js version does not matter.
+
+Ubuntu :  sudo apt-get install -y nodejs &&
+          sudo ln -sf /usr/bin/nodejs /usr/local/bin/node
+
+Debian >=       sudo apt-get update &&
+7 (Wheezy  :    sudo apt-get install -y apt-transport-https ca-certificates &&
+or later)       curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_8.x &&
+                sudo bash setup-nodejs &&
+                sudo apt-get install -y nodejs build-essential
+                
+Red Hat, CentOS, 
+Fedora, Amazon Linux,    :  sudo yum install -y epel-release
+Scientific Linux Copy       sudo yum install -y --enablerepo=epel nodejs npm
+
+Other operating systems	:  Please install Node.js from www.nodejs.org.
